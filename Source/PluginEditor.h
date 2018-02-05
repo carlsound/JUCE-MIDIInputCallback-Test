@@ -13,6 +13,7 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "PluginProcessor.h"
 //
+#include "MidiManager.h"
 #include "MidiMessagesGuiComponent.h"
 
 
@@ -35,4 +36,8 @@ private:
     MidiInputCallbackTestAudioProcessor& processor;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MidiInputCallbackTestAudioProcessorEditor)
+	//
+	std::shared_ptr<MidiManager> midi_mgr_;
+	std::shared_ptr<MidiMessagesGuiComponent> msg_gui_component_;
+	//ScopedPointer<MidiMessagesGuiComponent> msg_gui_component_;
 };
