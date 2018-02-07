@@ -61,6 +61,8 @@ private:
 
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MidiMessagesGuiComponent)
+
+	MidiMessageCollector midi_message_collector_;
 };
 
 //[EndFile] You can add extra defines here...
