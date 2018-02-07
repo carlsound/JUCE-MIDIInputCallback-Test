@@ -33,7 +33,7 @@
     Describe your class and how it works here!
                                                                     //[/Comments]
 */
-class MidiMessagesGuiComponent  : public Component
+class MidiMessagesGuiComponent  : public Component, MidiInputCallback
 {
 public:
     //==============================================================================
@@ -47,7 +47,9 @@ public:
     void paint (Graphics& g) override;
     void resized() override;
 
-
+	//==============================================================================
+	void handleIncomingMidiMessage(MidiInput *source, const MidiMessage &message) override;
+	void handlePartialSysexMessage(MidiInput *source, const uint8 *messageData, int numBytesSoFar, double timestamp) override;
 
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.

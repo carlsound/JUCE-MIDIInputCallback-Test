@@ -19,7 +19,7 @@ MidiInputCallbackTestAudioProcessorEditor::MidiInputCallbackTestAudioProcessorEd
     // Make sure that before the constructor has finished, you've set the
     // editor's size to whatever you need it to be.
     setSize (400, 300);
-	midi_mgr_ = std::make_shared<MidiManager>();
+	//midi_mgr_ = std::make_shared<MidiManager>();
 	msg_gui_component_ = std::make_shared<MidiMessagesGuiComponent>();
 	//addChildComponent(*msg_gui_component_);
 	addAndMakeVisible(*msg_gui_component_, -1);
@@ -29,7 +29,7 @@ MidiInputCallbackTestAudioProcessorEditor::MidiInputCallbackTestAudioProcessorEd
 
 MidiInputCallbackTestAudioProcessorEditor::~MidiInputCallbackTestAudioProcessorEditor()
 {
-	midi_mgr_ = nullptr;
+	//midi_mgr_ = nullptr;
 	msg_gui_component_ = nullptr;
 }
 

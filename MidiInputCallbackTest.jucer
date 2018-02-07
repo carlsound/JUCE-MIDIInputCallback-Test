@@ -15,8 +15,6 @@
               companyName="carlsound" companyWebsite="carlsound.net">
   <MAINGROUP id="rOQd2e" name="MidiInputCallbackTest">
     <GROUP id="{AB624201-4A7A-024F-D954-6C99B3C5B7E1}" name="Source">
-      <FILE id="HcrMst" name="MidiManager.cpp" compile="1" resource="0" file="Source/MidiManager.cpp"/>
-      <FILE id="johXsj" name="MidiManager.h" compile="0" resource="0" file="Source/MidiManager.h"/>
       <FILE id="GBOuRs" name="MidiMessagesGuiComponent.cpp" compile="1" resource="0"
             file="Source/MidiMessagesGuiComponent.cpp"/>
       <FILE id="DIj1su" name="MidiMessagesGuiComponent.h" compile="0" resource="0"

@@ -21,7 +21,7 @@ public:
 
 	//==============================================================================
 	void handleIncomingMidiMessage(MidiInput *source, const MidiMessage &message) override;
-	void handlePartialSysexMessage(MidiInput *source, const uint8 *messageData, int numBytesSoFar, double timestamp);
+	void handlePartialSysexMessage(MidiInput *source, const uint8 *messageData, int numBytesSoFar, double timestamp) override;
 
 protected:
 	//==============================================================================

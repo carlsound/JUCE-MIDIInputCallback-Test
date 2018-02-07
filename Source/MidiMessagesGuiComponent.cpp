@@ -85,13 +85,20 @@ void MidiMessagesGuiComponent::resized()
     //[/UserResized]
 }
 
+//==============================================================================
+void MidiMessagesGuiComponent::handleIncomingMidiMessage(MidiInput * source, const MidiMessage & message)
+{
+}
 
+void MidiMessagesGuiComponent::handlePartialSysexMessage(MidiInput * source, const uint8 * messageData, int numBytesSoFar, double timestamp)
+{
+}
 
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
 //[/MiscUserCode]
 
 
-//==============================================================================
+
 #if 0
 /*  -- Projucer information section --
 
