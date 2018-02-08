@@ -33,7 +33,8 @@
     Describe your class and how it works here!
                                                                     //[/Comments]
 */
-class MidiMessagesGuiComponent  : public Component, MidiInputCallback
+class MidiMessagesGuiComponent  : public Component,
+                                  MidiInputCallback
 {
 public:
     //==============================================================================
@@ -42,17 +43,19 @@ public:
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
+    void setLabel(String message);
+	void handleIncomingMidiMessage(MidiInput *source, const MidiMessage &message) override;
+	void handlePartialSysexMessage(MidiInput *source, const uint8 *messageData, int numBytesSoFar, double timestamp) override;
     //[/UserMethods]
 
     void paint (Graphics& g) override;
     void resized() override;
 
-	//==============================================================================
-	void handleIncomingMidiMessage(MidiInput *source, const MidiMessage &message) override;
-	void handlePartialSysexMessage(MidiInput *source, const uint8 *messageData, int numBytesSoFar, double timestamp) override;
+
 
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
+	MidiMessageCollector midi_message_collector_;
     //[/UserVariables]
 
     //==============================================================================
@@ -61,8 +64,6 @@ private:
 
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (MidiMessagesGuiComponent)
-
-	MidiMessageCollector midi_message_collector_;
 };
 
 //[EndFile] You can add extra defines here...

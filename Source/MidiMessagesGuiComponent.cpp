@@ -85,27 +85,28 @@ void MidiMessagesGuiComponent::resized()
     //[/UserResized]
 }
 
-//============================================================================= =
+
+
+//[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
+
+void MidiMessagesGuiComponent::setLabel(String message)
+{
+	midi_messages_label_->setText((midi_messages_label_->getText() + '\n' + message), sendNotification);
+}
 
 void MidiMessagesGuiComponent::handleIncomingMidiMessage(MidiInput * source, const MidiMessage & message)
 {
 	midi_message_collector_.addMessageToQueue(message);
 	//
-	midi_messages_label_->setText((midi_messages_label_->getText() + '\n' + message.getDescription()), sendNotification);
+	setLabel(message.getDescription());
 	//
-	if (DEBUG)
-	{
-		std::cout << message.getDescription();
-	}
+	std::cout << message.getDescription();
 }
 
 void MidiMessagesGuiComponent::handlePartialSysexMessage(MidiInput * source, const uint8 * messageData, int numBytesSoFar, double timestamp)
 {
 }
 
-
-
-//[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
 //[/MiscUserCode]
 
 
@@ -119,9 +120,10 @@ void MidiMessagesGuiComponent::handlePartialSysexMessage(MidiInput * source, con
 BEGIN_JUCER_METADATA
 
 <JUCER_COMPONENT documentType="Component" className="MidiMessagesGuiComponent"
-                 componentName="" parentClasses="public Component" constructorParams=""
-                 variableInitialisers="" snapPixels="8" snapActive="1" snapShown="1"
-                 overlayOpacity="0.330" fixedSize="0" initialWidth="400" initialHeight="300">
+                 componentName="" parentClasses="public Component, MidiInputCallback"
+                 constructorParams="" variableInitialisers="" snapPixels="8" snapActive="1"
+                 snapShown="1" overlayOpacity="0.330" fixedSize="0" initialWidth="400"
+                 initialHeight="300">
   <BACKGROUND backgroundColour="ff323e44"/>
   <LABEL name="MIDI Messages" id="a314df2c57cdf13f" memberName="midi_messages_label_"
          virtualName="" explicitFocusOrder="0" pos="0 0 400 300" edTextCol="ff000000"

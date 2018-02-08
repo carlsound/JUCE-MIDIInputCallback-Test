@@ -28,5 +28,5 @@ protected:
 
 private:
 	//==============================================================================
-
+    MidiMessageCollector midi_message_collector_;
 };

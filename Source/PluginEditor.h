@@ -41,5 +41,5 @@ private:
 	std::shared_ptr<MidiMessagesGuiComponent> msg_gui_component_;
 	//ScopedPointer<MidiMessagesGuiComponent> msg_gui_component_;
 	//
-	MidiMessageCollector midi_message_collector_;
+	//MidiMessageCollector midi_message_collector_;
 };
