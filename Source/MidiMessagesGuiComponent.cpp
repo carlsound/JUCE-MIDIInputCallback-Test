@@ -7,12 +7,12 @@
   the "//[xyz]" and "//[/xyz]" sections will be retained when the file is loaded
   and re-saved.
 
-  Created with Projucer version: 5.2.0
+  Created with Projucer version: 5.2.1
 
   ------------------------------------------------------------------------------
 
-  The Projucer is part of the JUCE library - "Jules' Utility Class Extensions"
-  Copyright (c) 2015 - ROLI Ltd.
+  The Projucer is part of the JUCE library.
+  Copyright (c) 2017 - ROLI Ltd.
 
   ==============================================================================
 */
@@ -32,13 +32,16 @@ MidiMessagesGuiComponent::MidiMessagesGuiComponent ()
     //[Constructor_pre] You can add your own custom stuff here..
     //[/Constructor_pre]
 
-    addAndMakeVisible (midi_messages_label_ = new Label ("MIDI Messages",
-                                                         TRANS("MIDI Messages")));
-    midi_messages_label_->setFont (Font (15.00f, Font::plain).withTypefaceStyle ("Regular"));
-    midi_messages_label_->setJustificationType (Justification::topLeft);
-    midi_messages_label_->setEditable (false, false, false);
-    midi_messages_label_->setColour (TextEditor::textColourId, Colours::black);
-    midi_messages_label_->setColour (TextEditor::backgroundColourId, Colour (0x00000000));
+    addAndMakeVisible (midi_messages_text_editor_ = new TextEditor ("MIDI Messages"));
+    midi_messages_text_editor_->setMultiLine (true);
+    midi_messages_text_editor_->setReturnKeyStartsNewLine (true);
+    midi_messages_text_editor_->setReadOnly (true);
+    midi_messages_text_editor_->setScrollbarsShown (true);
+    midi_messages_text_editor_->setCaretVisible (false);
+    midi_messages_text_editor_->setPopupMenuEnabled (false);
+    midi_messages_text_editor_->setText (TRANS("MIDI Messages"));
+
+    midi_messages_text_editor_->setBounds (0, 0, 400, 300);
 
 
     //[UserPreSize]
@@ -58,7 +61,7 @@ MidiMessagesGuiComponent::~MidiMessagesGuiComponent()
     //[Destructor_pre]. You can add your own custom destruction code here..
     //[/Destructor_pre]
 
-    midi_messages_label_ = nullptr;
+    midi_messages_text_editor_ = nullptr;
 
 
     //[Destructor]. You can add your own custom destruction code here..
@@ -82,7 +85,6 @@ void MidiMessagesGuiComponent::resized()
     //[UserPreResize] Add your own custom resize code here..
     //[/UserPreResize]
 
-    midi_messages_label_->setBounds (0, 0, 400, 300);
     //[UserResized] Add your own custom resize handling here..
     //[/UserResized]
 }
@@ -98,7 +100,7 @@ MidiInputCallback * MidiMessagesGuiComponent::getMIdiInputCallback()
 
 void MidiMessagesGuiComponent::setLabel(String message)
 {
-	midi_messages_label_->setText((midi_messages_label_->getText() + '\n' + message), sendNotification);
+	midi_messages_text_editor_->setText((midi_messages_text_editor_->getText() + '\n' + message), sendNotification);
 }
 
 void MidiMessagesGuiComponent::setSampleRate(double sampleRate)
@@ -141,11 +143,10 @@ BEGIN_JUCER_METADATA
                  snapShown="1" overlayOpacity="0.330" fixedSize="0" initialWidth="400"
                  initialHeight="300">
   <BACKGROUND backgroundColour="ff323e44"/>
-  <LABEL name="MIDI Messages" id="a314df2c57cdf13f" memberName="midi_messages_label_"
-         virtualName="" explicitFocusOrder="0" pos="0 0 400 300" edTextCol="ff000000"
-         edBkgCol="0" labelText="MIDI Messages" editableSingleClick="0"
-         editableDoubleClick="0" focusDiscardsChanges="0" fontname="Default font"
-         fontsize="15" kerning="0" bold="0" italic="0" justification="9"/>
+  <TEXTEDITOR name="MIDI Messages" id="a343f87b2c91e9a5" memberName="midi_messages_text_editor_"
+              virtualName="" explicitFocusOrder="0" pos="0 0 400 300" initialText="MIDI Messages"
+              multiline="1" retKeyStartsLine="1" readonly="1" scrollbars="1"
+              caret="0" popupmenu="0"/>
 </JUCER_COMPONENT>
 
 END_JUCER_METADATA

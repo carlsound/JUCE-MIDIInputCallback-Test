@@ -7,12 +7,12 @@
   the "//[xyz]" and "//[/xyz]" sections will be retained when the file is loaded
   and re-saved.
 
-  Created with Projucer version: 5.2.0
+  Created with Projucer version: 5.2.1
 
   ------------------------------------------------------------------------------
 
-  The Projucer is part of the JUCE library - "Jules' Utility Class Extensions"
-  Copyright (c) 2015 - ROLI Ltd.
+  The Projucer is part of the JUCE library.
+  Copyright (c) 2017 - ROLI Ltd.
 
   ==============================================================================
 */
@@ -62,7 +62,7 @@ private:
     //[/UserVariables]
 
     //==============================================================================
-    ScopedPointer<Label> midi_messages_label_;
+    ScopedPointer<TextEditor> midi_messages_text_editor_;
 
 
     //==============================================================================
