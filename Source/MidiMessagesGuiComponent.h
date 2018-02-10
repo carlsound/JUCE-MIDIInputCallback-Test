@@ -43,7 +43,9 @@ public:
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
+	MidiInputCallback* getMIdiInputCallback();
     void setLabel(String message);
+    void setSampleRate(double sampleRate);
 	void handleIncomingMidiMessage(MidiInput *source, const MidiMessage &message) override;
 	void handlePartialSysexMessage(MidiInput *source, const uint8 *messageData, int numBytesSoFar, double timestamp) override;
     //[/UserMethods]
@@ -56,6 +58,7 @@ public:
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
 	MidiMessageCollector midi_message_collector_;
+    double sample_rate_;
     //[/UserVariables]
 
     //==============================================================================

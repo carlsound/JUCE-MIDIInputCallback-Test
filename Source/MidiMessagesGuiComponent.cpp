@@ -48,6 +48,8 @@ MidiMessagesGuiComponent::MidiMessagesGuiComponent ()
 
 
     //[Constructor] You can add your own custom stuff here..
+    sample_rate_ = 44100;
+    midi_message_collector_.reset(sample_rate_);
     //[/Constructor]
 }
 
@@ -89,18 +91,32 @@ void MidiMessagesGuiComponent::resized()
 
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
 
+MidiInputCallback * MidiMessagesGuiComponent::getMIdiInputCallback()
+{
+	return this;
+}
+
 void MidiMessagesGuiComponent::setLabel(String message)
 {
 	midi_messages_label_->setText((midi_messages_label_->getText() + '\n' + message), sendNotification);
+}
+
+void MidiMessagesGuiComponent::setSampleRate(double sampleRate)
+{
+    sample_rate_ = sampleRate;
+    midi_message_collector_.reset(sample_rate_);
 }
 
 void MidiMessagesGuiComponent::handleIncomingMidiMessage(MidiInput * source, const MidiMessage & message)
 {
 	midi_message_collector_.addMessageToQueue(message);
 	//
-	setLabel(message.getDescription());
-	//
-	std::cout << message.getDescription();
+    const MessageManagerLock mmLock;
+    //
+    String description = message.getDescription();
+    //
+    std::cout << description;
+	setLabel(description);
 }
 
 void MidiMessagesGuiComponent::handlePartialSysexMessage(MidiInput * source, const uint8 * messageData, int numBytesSoFar, double timestamp)

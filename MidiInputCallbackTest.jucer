@@ -11,10 +11,13 @@
               pluginIsSynth="1" pluginWantsMidiIn="1" pluginProducesMidiOut="0"
               pluginIsMidiEffectPlugin="0" pluginEditorRequiresKeys="0" pluginAUExportPrefix="MidiInputCallbackTestAU"
               pluginRTASCategory="" aaxIdentifier="net.carlsound.MidiInputCallbackTest"
-              pluginAAXCategory="AAX_ePlugInCategory_Dynamics" jucerVersion="5.2.0"
+              pluginAAXCategory="AAX_ePlugInCategory_Dynamics" jucerVersion="5.2.1"
               companyName="carlsound" companyWebsite="carlsound.net">
   <MAINGROUP id="rOQd2e" name="MidiInputCallbackTest">
     <GROUP id="{AB624201-4A7A-024F-D954-6C99B3C5B7E1}" name="Source">
+      <FILE id="Mk887i" name="DeviceManager.cpp" compile="1" resource="0"
+            file="Source/DeviceManager.cpp"/>
+      <FILE id="M9RTwg" name="DeviceManager.h" compile="0" resource="0" file="Source/DeviceManager.h"/>
       <FILE id="GBOuRs" name="MidiMessagesGuiComponent.cpp" compile="1" resource="0"
             file="Source/MidiMessagesGuiComponent.cpp"/>
       <FILE id="DIj1su" name="MidiMessagesGuiComponent.h" compile="0" resource="0"
